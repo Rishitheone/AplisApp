@@ -1,0 +1,599 @@
+<div class="m-5 ">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>Category Management</span>
+      <span class="example-spacer"></span>
+      <span>
+        <button class="btn btn12" (click)="populationForm()">Add New Category</button>
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-toolbar class="my-2 bgt">
+    <mat-toolbar-row style="width: 100%;">
+      <span style="width: 70%;">Title</span>
+      <span style="width: 15%;">Date</span>
+      <span style="width: 15%;">Status</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <!-- ///////////////// 1staccordion -->
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onPreschool()">
+        <mat-panel-title class="w-100 fs">
+          Preschool
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="p-2">
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion class="example-headers-align">
+          <mat-expansion-panel *ngFor="let node of Primary;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75 pt-1">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-title class="w-15">
+                <div class="Nbtn1">
+                  {{node.created_at | date}}
+                </div>
+              </mat-panel-title>
+              <mat-panel-title class="w-15">
+                <div class="Nbtn1">
+                  {{node.status}}
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- ///////end////////// -->
+  <!-- ///////////////// 2nd accordion -->
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onLower()">
+        <mat-panel-title class="w-100 fs">
+          Lower Middle School
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="p-2">
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let node of Secondary;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- ///////end////////// -->
+  <!-- ///////////////// 3rdaccordion -->
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onUpprer()">
+        <mat-panel-title class="w-100 fs">
+          Upper Middle School
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let node of Higher;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- ///////////////// 4rdaccordion -->
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onSecondary()">
+        <mat-panel-title class="w-100 fs">
+          Secondary School
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let node of SecondarySchool;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- ///////////////// 5 rdaccordion -->
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onFriction()">
+        <mat-panel-title class="w-100 fs">
+          Friction
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let node of Friction;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- ///////////////// 6 rdaccordion -->
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onNonFriction()">
+        <mat-panel-title class="w-100 fs">
+          Non-Friction
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let node of NonFriction;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- ///////////////// 7 rdaccordion -->
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onComic()">
+        <mat-panel-title class="w-100 fs">
+          Comic
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let node of Comic;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+   <!-- ///////////////// 8 rdaccordion -->
+   <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onReference()">
+        <mat-panel-title class="w-100 fs">
+          Education & Reference
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let node of EducationReference;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+   <!-- ///////////////// 9 rdaccordion -->
+   <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg" (click)="onCollections()">
+        <mat-panel-title class="w-100 fs">
+          Literary Collections
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let node of LiteraryCollections;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- ///////////////// 9 rdaccordion -->
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel class="mt-1 for-bg">
+      <mat-expansion-panel-header class="set-bg"  (click)="onClassifiable()">
+        <mat-panel-title class="w-100 fs">
+          Non Classifiable
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-accordion>
+          <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </div>
+          <mat-expansion-panel *ngFor="let node of NonClassifiable;">
+            <mat-expansion-panel-header (click)="onSelect(node)" class="w-100">
+              <mat-panel-title class="w-75">
+                <div class="Nbtn">
+                  <ul class="lirow">
+                    <li>{{node.name}}</li>
+                    <li><button type="button" (click)="OnEditChild(node.id)">Edit</button> <button (click)="onDelete(node)">Delete</button></li>
+                  </ul>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.created_at | date}}</div>
+              </mat-panel-description>
+              <mat-panel-description class="w-15">
+                <div class="Nbtn1">{{node.status}}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div *ngFor="let sub of AllSubCategory" class="border">
+              <ul class="for-line w-100 pt-3">
+                <li class="w-75">
+                  <div class="Nbtn">
+                    <ul class="lirow">
+                      <li>{{sub.name}}</li>
+                      <li><button type="button" (click)="OnEditChild(sub.id)">Edit</button> <button (click)="onDeleteSubCategory(sub)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.created_at}}</div>
+                </li>
+                <li class="w-15">
+                  <div class="Nbtn1">{{sub.status}}</div>
+                </li>
+              </ul>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- ///////end////////// -->
+
+
+</div>

@@ -1,0 +1,9 @@
+<div class="card-header ptCr" (click)="isHidden=!isHidden"  (click)="onSelect(category)">
+  <p> {{category.name}}</p> 
+  <p> {{category.created_at | date}}</p>  
+  <p> {{category.status}}</p> 
+  <p> {{category.id}}</p> 
+ </div>
+ <div class="card-body" [hidden]="isHidden">
+   Sub Category
+  </div>

@@ -1,0 +1,135 @@
+<div class="p-3 m-5  bg-light border-c">
+  <div class="row mx-5 pt-3 pb-3">
+    <div class="col-md-2 pt-1 ">
+      <a routerLink='/home/Explore'>
+        <div class="card  border-d">
+          <p class="center"> +</p>
+          <p class="text-center pt-3 name-1">Explore</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-2 pt-1 ">
+      <a routerLink='/home/book/create'>
+        <div class="card  border-d">
+          <p class="center"> +</p>
+          <p class="text-center pt-3 name-1">eBook</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-2 pt-1">
+      <a routerLink='/home/category'>
+        <div class="card border-d">
+          <p class="center"> +</p>
+          <p class="text-center pt-3 name-1">Category</p>
+        </div>
+
+      </a>
+    </div>
+    <div class="col-md-2 pt-1">
+      <a routerLink='/home/series'>
+        <div class="card border-d">
+          <p class="center"> +</p>
+          <p class="text-center pt-3 name-1">Series</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-2 pt-1">
+      <div class="card border-d">
+        <p class="center"> +</p>
+        <p class="text-center pt-3 name-1">User</p>
+      </div>
+
+    </div>
+    <div class="col-md-2 pt-1">
+      <a routerLink='/home/author'>
+        <div class="card border-d">
+          <p class="center"> +</p>
+          <p class="text-center pt-3 name-1">Author</p>
+        </div>
+      </a>
+    </div>
+    <!-- <div class="col-md-2 pt-1">
+      <a routerLink='/home/editor'>
+        <div class="card border-d">
+          <p class="center"> +</p>
+          <p class="text-center pt-3 name-1">Editor</p>
+        </div>
+      </a>
+    </div> -->
+  </div>
+</div>
+<!-- book list================================ -->
+<div class="mx-5 mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center pt-3">Your Book</h3>
+    </div>
+    <div class="col-md-4 search-div">
+      <mat-form-field class="pt-2 search-form-field" floatLabel="never">
+        <mat-label>Sort by</mat-label>
+        <mat-select>
+          <mat-option value=0 (click)="setOrder('book.title')">By Name</mat-option>
+          <mat-option value=1 (click)="setOrder('book.sub_title')">By Author</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div class="col-md-3 search-div">
+       <mat-form-field class="pt-2 search-form-field" floatLabel="never">
+        <mat-label>Filter by</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let filter of filter" [value]="filter.value">
+            {{filter.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> 
+    </div> -->
+    <div class="col-md-4 search-div">
+      <mat-form-field class="pt-2 search-form-field" floatLabel="never">
+        <input matInput [(ngModel)]="searchText" autocomplete="off" placeholder="Search by book name">
+        <mat-icon matSuffix>search</mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div class="mx-5 mb-5 bg-light border-c">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <div class="m-5 " *ngIf="isLoading" 
+   style="display: flex; justify-content: center; align-items: center">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+  <div class="row m-0 border p-3"
+    *ngFor="let book of books | orderBy: order:reverse:'case-insensitive'  |paginate: { itemsPerPage: 10, currentPage: p} | filter:searchText , let i=index,">
+    <div class="col-md-4 border-right px-5 py-4">
+      <div class="book-cover  border-d">
+        <img src="{{book.book_cover}}" alt="Book Cover" class="book-img">
+      </div>
+      <div class="title">
+        <h2>{{book.title}}</h2>
+        <h4>{{book.sub_title}}</h4>
+        <p>By Author</p>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="dt-1 border-bottom">
+        <p>Aplis eBook</p>
+        <h3>{{book.status}}</h3>
+        <h5>Last Modifies on {{book.updated_at | date}}</h5>
+      </div>
+      <div class="for-b border-bottom pt-3">
+        <button (click)="onUpdate(book.id)">Continue</button>
+        <button mat-button [matMenuTriggerFor]="menu" class="bg-secondary">...</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="deleteAuthorList(book.id)">Delete</button>
+          <button mat-menu-item (click)="onUpdate(book.id)">Edit</button>
+        </mat-menu>
+      </div>
+      <div class="for-page">Page:36</div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons
+    class="border" (page)="onPageChange($event)">
+  </mat-paginator> -->
+</div>

@@ -1,0 +1,74 @@
+
+  .pdleft {
+    padding-left: .5rem!important;
+    font-weight: 900;
+    font-size: 18px;
+    margin-top: 13px;
+}
+h4.pt-3.px-5.lg-1.lg-1 {
+    font-weight: 900;
+    font-size: 1.5rem;
+    padding: 36px 60px !important;
+    color: #989898;
+}
+.card {
+    width: 100%;
+    height:300px;
+}
+.border-d{
+    border-style: dotted;
+    border-width: 2px;
+    border-color: #A8A8A8;
+}
+.center {
+    text-align: center;
+    padding: 100px;
+    color: #4E91E8;
+    font-size: 4rem;
+    font-weight: 100;
+}
+.adj{ 
+    cursor: pointer;
+    margin: 10px 0px;
+}
+a{
+    text-decoration: none;
+}
+.dis1{
+    p{
+        font-size: 14px;
+    }
+}
+.imght{
+    height: 200px;
+}
+.mat-card-actions, .mat-card-content, .mat-card-subtitle {
+    font-size: 12px;
+    text-align: justify;
+}
+.forimg{
+    height: 100%;
+    width: 100%;
+}
+button.editbtn.mat-raised-button {
+    position: absolute;
+    right: 6px;
+}
+
+.example-card {
+    max-width: 100%;
+    height: 300px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  .text-for {
+    padding: 5px 10px;
+     p{
+         text-align: justify;
+         font-size:11px;
+     }
+}
+.mat-raised-button {
+    top: 150px;
+    position: absolute;
+}

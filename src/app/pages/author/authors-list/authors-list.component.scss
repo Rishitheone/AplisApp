@@ -1,0 +1,43 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  table { 
+    border-collapse: collapse; 
+} 
+th { 
+    color:black; 
+} 
+th, td { 
+    width:150px; 
+    text-align:center; 
+    padding-top:10px 
+  
+} 
+.geeks { 
+    border-right:hidden; 
+    height: 100px;
+    position: relative;
+} 
+.gfg { 
+    border-collapse:separate; 
+    border-spacing:0 10px; 
+} 
+.btn1{
+  position: absolute;
+  left: 4rem;
+  bottom: 7px;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.btn2{
+    position: absolute;
+    left: 8rem;
+    bottom: 7px;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.btn12{
+    background-color: #dad8d8!important;
+    border-radius: 0px;
+    border: 1px solid #b5b5b5!important;
+}

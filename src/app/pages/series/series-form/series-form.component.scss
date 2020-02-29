@@ -1,0 +1,43 @@
+.mat-typography{
+    width: 100%;
+}
+.example-spacer{
+    flex:1 1 auto;
+}
+.search-form-field {
+    width: 88%;
+    color: blue;
+    background:inherit;
+  }
+  .search-div {
+    margin: 10px 0px 10px 0px;
+    width: 74%;
+    position: absolute;
+    top: -5px;
+    right: -38px;
+  }
+  .tex{
+    font-size: 1rem;
+  }
+  .for-w {
+    width: 100%;
+    padding: 1rem 3rem;
+}
+label {
+    width: 100%;
+}
+input,textarea{
+    width: 100%;
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+.mat-error {
+  padding-top: 20px;
+}

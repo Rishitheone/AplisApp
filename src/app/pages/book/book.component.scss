@@ -1,0 +1,228 @@
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  background-color: transparent !important;
+}
+mat-error{
+   padding-top: 20px;
+}
+.lg-1 {
+  color: #afadad;
+  font-weight: 400;
+}
+.dis1 {
+  font-size: 13px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+  margin-top: 20px !important;
+}
+.img-card {
+  width: 100px;
+  height: 150px;
+  border-style: dotted;
+  border-width: 2px;
+  border-color: gray;
+  overflow: hidden;
+}
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: 6px 6px 24px rgba(255, 188, 0, 0.59);
+}
+
+.btn {
+  color: black;
+  background-color: #ffbc00;
+  padding: 8px 40px;
+  border-radius: 0;
+  font-size: 17px;
+}
+.arng {
+  float: right;
+}
+
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+////////////////////image upload css//////////////
+
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 10px auto 30px;
+}
+
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 19px;
+  z-index: 1;
+  top: 13px;
+}
+
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+
+.avatar-upload .avatar-edit .custom-label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #3efc78;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+
+.avatar-upload .avatar-edit .upload-image {
+  background: #3efc78;
+}
+
+.avatar-upload .avatar-edit .remove-image {
+  background: #e91e63;
+}
+
+.avatar-upload .avatar-edit .custom-label:hover {
+  opacity: 1;
+}
+
+.avatar-upload .avatar-edit .custom-label:after {
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  top: 8px;
+  right: 0;
+  left: 2px;
+  width: 18px;
+}
+
+.avatar-upload .avatar-preview {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 12px solid #fff;
+  -webkit-box-shadow: 0 0 45px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 45px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+// ====input css=====
+// .mat-form-field {
+//   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0
+//   rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+// }
+.search-form-field {
+  width: 88%;
+  color: blue;
+  background: inherit;
+}
+.tex {
+  font-size: 1rem;
+}
+.search-div {
+  margin: 10px 0px 10px 0px;
+}
+
+.header {
+  margin-top: 100px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.html-header {
+  margin: 15px 0 5px;
+}
+
+.html {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #f1f1f1;
+  min-height: 20px;
+  max-height: 10rem;
+  overflow: auto;
+}
+input:focus{
+    outline:none !important;
+  }
+.search-input {
+    width: 100%;
+    height: 40px;
+    padding: 1rem;
+    border: transparent;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.search-form-field {
+  width: 88%;
+  color: blue;
+  background:inherit;
+}
+.search-div {
+  margin: 10px 0px 10px 0px;
+}
+.pdleft {
+  padding-left: .5rem!important;
+  font-weight: 900;
+  font-size: 18px;
+  margin-top: 13px;
+}
+h4.pt-3.px-5.lg-1.lg-1 {
+  font-weight: 900;
+  font-size: 2.2rem;
+  padding: 36px 60px !important;
+  color: #989898;
+}
+.card {
+  width: 100%;
+  height:250px;
+}
+.border-d{
+  border-style: dotted;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: #A8A8A8;
+}
+.center {
+      text-align: center;
+      padding: 10px initial;
+      margin: 76px auto;
+      color: #4E91E8;
+      font-size: 4rem;
+      font-weight: 100;
+  
+}
+.adj{
+  padding: 0px;  
+  cursor: pointer;
+}
+a{
+  text-decoration: none;
+}

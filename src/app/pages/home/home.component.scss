@@ -1,0 +1,103 @@
+
+.card {
+    width: 100%;
+    height:200px;
+  }
+.book-cover{
+    height: 261px;
+    float: left;
+    width: 188px;
+}
+p.name-1.pt-3.text-center {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+.border-d{
+    border-style: dotted;
+    border-width: 2px;
+    border-color: #A8A8A8;
+}
+.center {
+    text-align: center;
+    margin: 20px auto;
+    color: #4E91E8;
+    font-size: 4rem;
+    font-weight: 100;
+}
+.border-c{
+    border:1px solid #A8A8A8;
+}
+a{
+    text-decoration: none;
+}
+.mat-form-field{
+    width:90%
+}
+.title{
+    float: left;
+    padding-left: 1rem;
+    padding-top: 1rem;
+        h4{
+            font-weight: 400;
+        };
+        p{
+            font-weight: 100;
+            font-size: 15px;
+        }
+}
+.dt-1{
+    float: left;
+    width: 70%;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    height: 123px;
+    p{
+        font-weight: 200;
+        font-size: 15px;
+    }
+    h3{
+        font-weight: 500;
+        font-size: 20px;
+    };
+    h5{
+        font-weight: 100;
+        font-size: 13px;
+    }
+}
+.for-b {
+    float: right;
+    width: 30%;
+    height: 123px;
+    button {
+        background: #E8C864;
+        border: none;
+        padding: 4px 20px;
+        text-align: center;
+        margin: 5px 10px;
+    }
+}
+.for-page {
+    width: 100%;
+    float: right;
+    padding: 1rem;
+    color: #4E91E8;
+}
+.search-form-field {
+    width: 88%;
+    color: #4E91E8;
+    background:inherit;
+  }
+  .search-div {
+    margin: 10px 0px 10px 0px;
+  }
+  img.book-img {
+    width: 100%;
+    height: 100%;
+}
+button.bg-secondary.mat-button {
+    height: 34px;
+    padding: 0px !important;
+    border-radius: 0px;
+    margin: 0px;
+    color: #fff;
+}

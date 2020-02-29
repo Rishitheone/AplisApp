@@ -1,0 +1,97 @@
+
+.px-t {
+  padding-right: 17rem;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.bgt{
+  background: #a8a8a8;
+}
+button.btn.btn1 {
+  position: absolute;
+  left: 3rem;
+  font-size: 20px;
+  font-weight: 900;
+}
+button.btn.btn2 {
+  position: absolute;
+  left: 8rem;
+  font-size: 20px;
+  font-weight: 900;
+}
+button.btn.btn12 {
+  border: 1px solid #b7b6b6;
+  border-radius: 0px;
+  padding: 10px 52px;
+  background: #a8a8a8;
+}
+.ptCr{
+  cursor: pointer;
+}
+// .example-headers-align .mat-expansion-panel-header-title,
+// .example-headers-align .mat-expansion-panel-header-description {
+//   flex-basis: 0;
+// }
+
+// .example-headers-align .mat-expansion-panel-header-description {
+//   justify-content: space-between;
+//   align-items: center;
+// }
+.for-line{
+  list-style: none;
+  display: flex;
+}
+.w-15{
+  width:15%;
+}
+.mat-expansion-panel-header {
+  min-height: 90px !important;
+}
+
+.for-bg {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.set-bg{
+  background: #fff !important;
+}
+mat-icon.delete.mat-icon.mat-icon-no-color.material-icons.notranslate {
+  color: red;
+  vertical-align: middle;
+  margin: 0 1rem;
+}
+mat-icon.edit.mat-icon.mat-icon-no-color.material-icons.notranslate {
+  color: green;
+  vertical-align: middle;
+  margin: 0 1rem;
+}
+ul.lirow {
+    list-style: none;
+    li {
+      margin: 10px;
+      font-size: 1.3rem;
+  }
+  button{
+    background: inherit;
+    outline: transparent;
+    border: transparent;
+    font-size: 17px;
+    padding: 4px 20px;
+    margin-right: 10px;
+  }
+  button:hover{
+    background: rgb(170, 169, 169);
+  }
+}
+.fs{
+  font-size: 1.3rem;
+}
+.Nbtn{
+  height: 80px;
+}
+.Nbtn1{
+  padding-top: 30px;
+}
+

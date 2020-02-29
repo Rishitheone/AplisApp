@@ -1,0 +1,116 @@
+<div class="row m-5">
+
+  <div class="col-md-3">
+    <form [formGroup]="Editorform" (ngSubmit)="onSubmit()">
+      <div class="edit-2 p-2 bg-light mb-3">
+        <label for="chap">CHAPTER Name</label>
+        <input type="text" formControlName="page_name" name="chap">
+      </div>
+      <div class="edit-2 p-2 bg-light mb-3">
+        <ul class="edit-1 p-1 mt-1">
+          <h3 class="text-center">Chapter-1</h3>
+          <li>
+            <label>Heading</label>
+            <input type="text" formControlName="heading">
+          </li>
+          <li>
+            <label>Sub Heading</label>
+            <input type="text" formControlName="sub_heading">
+          </li>
+          <li>
+            <label>Upload Image,Video or Url</label>
+            <input type="text">
+          </li>
+          <li>
+            <label>Mime Type</label>
+            <mat-form-field class="search-form-field" floatLabel="never">
+              <mat-label>Select Mime Type</mat-label>
+              <mat-select formControlName="mime_type" [(ngModel)]="selectValue">
+                <mat-option value="web">Web</mat-option>
+                <mat-option value="image">Image</mat-option>
+                <mat-option value="gif">Gif</mat-option>
+                <mat-option value="video">Video</mat-option>
+              </mat-select>
+
+            </mat-form-field>
+            <div *ngIf="selectValue" class="mt-2">
+              <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+                <input matInput placeholder="url..." formControlName="image_url">
+              </mat-form-field>
+            </div>
+            
+          </li>
+          <li>
+            <label>Body Text</label>
+            <!-- html editor start-->
+            <div [ngxSummernote]="config" formControlName="html_content"></div>
+            <!-- html editor end-->
+          </li>
+        </ul>
+        <div class="action">
+          <button style="background: #B7B6B6;">Discard</button><button style="background:#E8C864;"
+            type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-md-3" *ngIf="topic_id">
+    <form [formGroup]="myForm">
+      <div formArrayName="arr" *ngFor="let a of myForm.get('arr').controls; let i = index">
+        <div [formGroupName]="i" style="margin-bottom: 10px;">
+          <div class="edit-2 p-2 bg-light mb-3">
+            <ul class="edit-1 p-1 mt-1">
+              <h3 class="text-center">Sub-Topic</h3>
+              <li>
+                <label>Heading</label>
+                <input type="text" formControlName="heading">
+              </li>
+              <li>
+                <label>Sub Heading</label>
+                <input type="text" formControlName="sub_heading">
+              </li>
+              <li>
+                <label>Upload Image,Video or Url</label>
+                <input type="text">
+              </li>
+              <li>
+                <label>Mime Type</label>
+                <mat-form-field class="search-form-field" floatLabel="never">
+                  <mat-label>Select Mime Type</mat-label>
+                  <mat-select formControlName="mime_type" [(ngModel)]="selectValue">
+                    <mat-option value="web">Web</mat-option>
+                    <mat-option value="image">Image</mat-option>
+                    <mat-option value="gif">Gif</mat-option>
+                    <mat-option value="video">Video</mat-option>
+                  </mat-select>
+    
+                </mat-form-field>
+                <div *ngIf="selectValue" class="mt-2">
+                  <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+                    <input matInput placeholder="url..." formControlName="image_url">
+                  </mat-form-field>
+                </div>
+                
+              </li>
+              <li>
+                <label>Body Text</label>
+                <!-- html editor start-->
+                <div [ngxSummernote]="config" formControlName="html_content"></div>
+                <!-- html editor end-->
+              </li>
+            </ul>
+            <div class="action">
+             <button style="background:#E8C864;"
+              (click)="addItem()" >Add Topic</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <button type="submit" (click)="onClick()">Submit</button>
+    </form>
+  </div>
+</div>
+
+{{topic_id}}

@@ -1,0 +1,50 @@
+<form [formGroup]="form" (submit)=onSubmit(form)>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span> New Series</span>
+      <span class="example-spacer"></span>
+      <button mat-button mat-dialog-close type="reset">Close</button>
+      <button mat-button type="submit" [disabled]="!form.valid">Publish</button>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-dialog-content class="mat-typography">
+    <div class="row m-0">
+      <div class="col-md-7 border">
+        <div class="for-w border-bottom">
+          <label>Title *</label>
+          <input type="text" name="title" formControlName="title" required>
+          <mat-error *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
+            This field is <strong>required</strong>
+          </mat-error>
+        </div>
+
+        <div class="for-w border-bottom">
+          <label>Description *</label>
+          <textarea name="" id="" cols="10" rows="3" name="description" formControlName="description" required></textarea>
+          <mat-error *ngIf="!form.controls['description'].valid && form.controls['description'].touched">
+            This field is <strong>required</strong>
+          </mat-error>
+        </div>
+        <div class="row m-0 for-w">
+
+        </div>
+      </div>
+      <div class="col-md-5 border">
+        <mat-list role="list">
+          <mat-list-item role="listitem">Series Code :
+            <div class="dis2 search-div px-3">
+              <mat-form-field class="search-form-field" floatLabel="never">
+                <input matInput placeholder="Series Code" name="series_code" formControlName="series_code" required>
+                <mat-error *ngIf="!form.controls['series_code'].valid && form.controls['series_code'].touched">
+                  This field is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-list-item>
+        </mat-list>
+
+      </div>
+    </div>
+  </mat-dialog-content>
+</form>

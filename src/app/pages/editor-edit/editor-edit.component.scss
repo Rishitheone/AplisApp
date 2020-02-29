@@ -1,0 +1,39 @@
+label {
+    width: 100%;
+    font-weight: 700;
+};
+input[type="text"] {
+    width: 100%;
+};
+ul.edit-1 {
+    list-style: none;
+    li{
+        label {
+            width: 100%;
+            font-weight: 700;
+        };
+        input[type="text"] {
+            width: 100%;
+        };
+        textarea {
+            width: 100%;
+        }
+    }
+}
+.action {
+    text-align: end;
+    button {
+        outline: none;
+        border: transparent;
+        padding: 0px 15px;
+        margin: 0px 10px;
+    }
+}
+label.bt {
+    text-align: center;
+}
+.search-form-field{
+    width:100%;
+    margin: 0px;
+    background: #fff;
+  }

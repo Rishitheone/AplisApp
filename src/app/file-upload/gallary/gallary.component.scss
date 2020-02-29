@@ -1,0 +1,79 @@
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+.htr.row {
+    height: 450px;
+    padding: 0px;
+    margin: 0px;
+}
+ul{
+    list-style: none;
+    width: 20%;
+    padding: 1px;
+    margin: 0px;
+    li{
+        img{
+            cursor: pointer;
+            height:300px;
+        }
+    }
+}
+span.ng-star-inserted {
+    width: 80%;
+    border: 1px solid gray;
+    padding: 6px;
+    float: left;
+}
+.mat-tab-group {
+    margin-bottom: 10px !important;
+}
+video {
+    max-width: 100%;
+    height: auto;
+  }
+  .search-div {
+    margin: 10px;
+    width: 80%;
+}
+.mat-form-field {
+    width: 100%;
+}

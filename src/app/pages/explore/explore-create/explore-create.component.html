@@ -1,0 +1,151 @@
+<div class="m-5 border-c">
+  <form [formGroup]="formExpolre" class="normal-form" (ngSubmit)="onSubmit()">
+    <!-- for profile  -->
+    <div class="row mr-0 pt-3 bg-light">
+      <div class="col-md-3">
+        <h4 class="pt-3 px-5 lg-1 lg-1">Display view</h4>
+      </div>
+      <div class="col-md-9">
+        <div class="dis2 search-div px-3">
+          <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+            <input matInput placeholder="Title" formControlName="title">
+          </mat-form-field>
+          <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never" style="display: none;">
+            <input matInput placeholder="Title" formControlName="discover_id">
+          </mat-form-field>
+          <mat-form-field class="search-form-field" floatLabel="never" hintLabel="Max 200 characters">
+            <textarea matInput #input formControlName="title_description" placeholder="Title Body" rows="5"
+              maxlength="200"></textarea>
+            <mat-hint align="end">{{input.value?.length || 0}}/200</mat-hint>
+          </mat-form-field>
+          <mat-form-field class="search-form-field" floatLabel="never">
+            <mat-label>Mime Type</mat-label>
+            <mat-select formControlName="mime_type" [(ngModel)]="selectValue" required>
+              <mat-option value="web">Web</mat-option>
+              <mat-option value="image">Image</mat-option>
+              <mat-option value="gif">Gif</mat-option>
+              <mat-option value="video">Video</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!formExpolre.controls['mime_type'].valid && formExpolre.controls['mime_type'].touched">
+              This field is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+            <input matInput placeholder="Display URL" formControlName="header_url" required>
+            <mat-error *ngIf="!formExpolre.controls['header_url'].valid && formExpolre.controls['header_url'].touched">
+              This field is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <div *ngIf="selectValue == 'web'">
+            <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+              <input matInput placeholder="Card URL" formControlName="card_url" required>
+            </mat-form-field>
+            <mat-error *ngIf="!formExpolre.controls['card_url'].valid && formExpolre.controls['card_url'].touched">
+              This field is <strong>required</strong>
+            </mat-error>
+          </div>
+          <div *ngIf="selectValue == 'video'">
+            <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+              <input matInput placeholder="Card URL" formControlName="card_url" required>
+            </mat-form-field>
+            <mat-error *ngIf="!formExpolre.controls['card_url'].valid && formExpolre.controls['card_url'].touched">
+              This field is <strong>required</strong>
+            </mat-error>
+          </div>
+          <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+            <input matInput placeholder="AR URL" formControlName="ar_url">
+          </mat-form-field>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- for 3d file Upload  -->
+  <div class="row mr-0 mt-3 pt-3 pb-3 bg-light">
+    <div class="col-md-3">
+      <h4 class="pt-3 px-5 lg-1 lg-1">AR Ready</h4>
+    </div>
+    <div class="col-md-9">
+      <div class="dis1 p-3">
+        <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+          design to fill gaps in the page
+        </p>
+      </div>
+      <div class="col-md-12">
+        <div *ngIf="fileUploads.status==='error'">
+          <div [innerHTML]="fileUploads.message"></div>
+        </div>
+        <div *ngIf="fileUploads.status==='progress'">
+          <div class="progress" style="height: 20px;margin-bottom:20px;background-color: forestgreen;">
+            <div class="progress-bar" role="progressbar" [style.width.%]="fileUploads.message" aria-valuenow="25"
+              aria-valuemin="0" aria-valuemax="100">{{fileUploads.message}}%</div>
+          </div>
+        </div>
+        <div>AR URL :<br>
+          {{ARurl}}</div>
+      </div>
+      <div class="col-md-12">
+        <div class="upload-btn-wrapper mt-5">
+          <button class="btn">Upload AR</button>
+          <input type="file" name="file" accept=".zip" (change)="onARSelect($event)" />
+        </div><br>
+        <button (click)="onSubmitAR()" mat-raised-button>Upload on Server</button>
+      </div>
+    </div>
+  </div>
+  <!-- for Image/Video Upload  -->
+    <app-file-upload></app-file-upload>
+
+  <form [formGroup]="formExpolre" class="normal-form" (ngSubmit)="onSubmit()">
+    <!-- for Description  -->
+    <div class="row mr-0 mt-3 pt-3 bg-light">
+      <div class="col-md-3">
+        <h4 class="pt-3 px-5 lg-1 lg-1">Description</h4>
+      </div>
+      <div class="col-md-9">
+        <div class="dis1 p-3">
+          <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+            design to fill gaps in the page
+          </p>
+        </div>
+        <div class="dis2 search-div example-container ">
+          <div [ngxSummernote]="config" formControlName="long_description"></div>
+        </div>
+      </div>
+    </div>
+    <!-- for book-list  -->
+    <div class="row mr-0 mt-3 pt-3 bg-light">
+      <div class="col-md-3">
+        <h4 class="pt-3 px-5 lg-1 lg-1">Book List</h4>
+      </div>
+      <div class="col-md-9">
+        <div class="dis2 search-div px-3">
+          <mat-form-field>
+            <mat-select placeholder="books" multiple (change)="changeCity($event)" formControlName="books">
+              <mat-option *ngFor="let topping of toppingList" [value]="topping.id">
+                
+                {{topping.title}}{{topping.sub_title}}</mat-option>
+            </mat-select>
+            <!-- <mat-error *ngIf="!formExpolre.controls['books'].valid && formExpolre.controls['books'].touched">
+              This field is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button mat-button mat-raised-button class="bg-secondary m-2 " type="button" (click)="goBack()">Go
+        Back</button>
+      <button mat-button mat-raised-button class="arng m-2" [disabled]="!formExpolre.valid" type="submit">Save</button>
+    </div>
+  </form>
+
+</div>
+{{books | json}}
+<ul *ngFor="let item of books">
+  <li>{{item.id}}</li>
+</ul>
+{{test2}}
+<!-- <pre>{{ formExpolre.value | json }}</pre> -->

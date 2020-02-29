@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Gill Sans';
+  src: url('/assets/fonts/Gill\ Sans.otf') format("opentype");
+}
+*{
+  font-family: 'Gill Sans';
+}
+html,
+body {
+  height: 100%;
+}
+button:focus {
+  outline:none !important;
+  box-shadow:none !important;
+}
+body {
+  margin: 0;
+  background-color: #dad8d8 !important;
+}
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+.mat-horizontal-stepper-header-container {
+  background: #fff !important;
+}
+.mat-horizontal-content-container {
+  padding: 0 !important;
+  margin-top: 10px !important;
+}
+////////////////input css//////////////
+.search-div {
+  margin: 10px;
+}
+.search-form-field {
+  width: 60%;
+  margin-left: 10px;
+  padding: 1px 10px;
+  background-color:inherit;
+  border: 1px solid gray;
+}
+.search-form-field div.mat-form-field-underline {
+  display: none;
+}
+.search-form-field div.mat-form-field-infix {
+  border-top: 0px;
+}
+.search-form-field div.mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+.search-form-field div.mat-form-field-suffix button {
+  height: 32px;
+  width: 32px;
+}
+ul.ngx-pagination.ng-star-inserted {
+  padding: 1rem !important;
+}
+.ngxe-popover.imgc-ctnr .imgc-topbar.btn-ctnr button.active {
+  display: none !important;
+}
+span.note-icon-caret {
+    display: none !important;
+}
+.note-modal-footer {
+  height: 62px !important;
+}
+.note-dropdown-menu.dropdown-style {
+  min-width: 170px !important;
+}
+.form-control:focus {
+  color: black !important;
+  background-color: transparent !important;
+  // border-color: transparent !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+.note-dropdown-item{
+   h1{
+    font-size: 26px !important;
+    font-weight: bold !important;
+   };
+   h2 {
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+}
+.form-group.note-form-group.note-group-select-from-files {
+  display: none !important;
+}

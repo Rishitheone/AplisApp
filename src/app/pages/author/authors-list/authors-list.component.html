@@ -1,0 +1,43 @@
+<div class="m-5 ">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>Author/Publisher</span>
+      <span class="example-spacer"></span>
+      <span>
+        <button class="btn btn12" (click)="addAuthor()">Add New Author/Publisher</button>
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="table-responsive-sm">
+    <table class="table">
+      <tr>
+        <th>S.No</th>
+        <th>First Name</th>
+        <th>Last Lame</th>
+        <th>Author/Publisher</th>
+        <th>Language</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </table>
+    <div class="m-5 " *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <table class="gfg table">
+      <tr class="bg-light" *ngFor="let author of AuthorList.data">
+        <td class="geeks">{{author.id}}<br>
+          <button class="btn btn1" (click)="editAuthor(author)">Edit &nbsp;&nbsp;|</button>
+          <button class="btn btn2" (click)="onDelete(author)">Delete</button>
+        </td>
+        <td>{{author.first_name}}</td>
+        <td>{{author.last_name}}</td>
+        <td>{{author.role}}</td>
+        <td>{{author.language}}</td>
+        <td>{{author.published_at}}</td>
+        <td>{{author.status}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+{{error}}

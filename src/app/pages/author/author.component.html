@@ -1,0 +1,337 @@
+<div class="m-5 border-c">
+  <mat-toolbar>
+    <span class="example-spacer"></span>
+    <span>{{pageTitle}}</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <mat-horizontal-stepper linear="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+
+      <form [formGroup]="form" class="normal-form">
+        <ng-template matStepLabel>
+          Contributor Details
+        </ng-template>
+        <!-- for-language -->
+        <div class="row mr-0 pt-3 pb-3 bg-light">
+          <div class="col-md-3">
+            <h4 class="pt-3 px-5 lg-1 lg-1">Language</h4>
+          </div>
+          <div class="col-md-9">
+            <div class="dis1 p-3">
+              <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page before the actual words are put into the finished product.
+                Lorem ipsum resembles Latin but has no real meaning
+              </p>
+            </div>
+            <div class="dis2 search-div px-3">
+              <mat-form-field class="search-form-field" floatLabel="never">
+                <mat-label>None</mat-label>
+                <mat-select formControlName="language" required>
+                  <input (keyup)="onKey($event.target.value)" class="search-input" placeholder="Search....">
+                  <mat-option *ngFor="let language of selectedLanguage" [value]="language">
+                    {{language}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!form.controls['language'].valid && form.controls['language'].touched">
+                  This field is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <!-- for-type -->
+        <div class="row mr-0 mt-3 pt-3 pb-3 bg-light">
+          <div class="col-md-3">
+            <h4 class="pt-3 px-5 lg-1 lg-1">Type</h4>
+          </div>
+          <div class="col-md-9">
+            <div class="dis1 p-3">
+              <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page before the actual words are put into the finished product.
+                Lorem ipsum resembles Latin but has no real meaning
+              </p>
+            </div>
+            <div class="dis2 px-3">
+              <mat-radio-group aria-label="Select an option" formControlName="role" required>
+                <mat-radio-button value="author">Author</mat-radio-button>
+                <mat-radio-button value="publisher">Publisher </mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="!form.controls['role'].valid">
+                This field is <strong>required</strong>
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <!-- for Name -->
+        <div class="row mr-0 mt-3 pt-3 pb-3 bg-light">
+          <div class="col-md-3">
+            <h4 class="pt-3 px-5 lg-1 lg-1">Name</h4>
+          </div>
+          <div class="col-md-9">
+            <div class="dis1 p-3">
+              <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page
+              </p>
+            </div>
+            <div class="dis2 search-div example-container px-3">
+              <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+                <input matInput formControlName="first_name" placeholder="First Name" required>
+                <mat-error *ngIf="!form.controls['first_name'].valid && form.controls['first_name'].touched">
+                  This field is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+                <input matInput formControlName="last_name" placeholder="Last Name" required>
+                <mat-error *ngIf="!form.controls['last_name'].valid && form.controls['last_name'].touched">
+                  This field is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+         <!-- for Author id -->
+         <div class="row mr-0 mt-3 pt-3 pb-3 bg-light" style="display: none;">
+          <div class="col-md-3">
+            <h4 class="pt-3 px-5 lg-1 lg-1">book id</h4>
+          </div>
+          <div class="col-md-9">
+            <div class="dis1 p-3">
+              <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page
+              </p>
+            </div>
+            <div class="dis2 search-div example-container px-3">
+              <mat-form-field class="example-full-width my-1 search-form-field" floatLabel="never">
+                <input matInput placeholder="Title" formControlName="author_id">
+
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <!-- for-description -->
+        <div class="row mr-0 mt-3 pt-3 bg-light">
+          <div class="col-md-3">
+            <h4 class="pt-3 px-5 lg-1 lg-1">Description</h4>
+          </div>
+          <div class="col-md-9">
+            <div class="dis1 p-3">
+              <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page
+              </p>
+            </div>
+            <div class="dis2 search-div example-container px-3">
+              <div [ngxSummernote]="config" formControlName="description" required>
+              </div>
+              <mat-error *ngIf="!form.controls['description'].valid && form.controls['description'].touched">
+                This is required <strong>min 30 characters</strong> and <strong>max 4000 characters</strong>
+              </mat-error>
+
+              <!-- html editor end-->
+              <mat-hint class="text-lg-right">Maximum 400 charactor's</mat-hint>
+            </div>
+          </div>
+        </div>
+        <!-- for-keywords -->
+        <div class="row mr-0 mt-3 pt-3 bg-light">
+          <div class="col-md-3">
+            <h4 class="pt-3 px-5 lg-1 lg-1">Keywords</h4>
+          </div>
+          <div class="col-md-9">
+            <div class="dis1 p-3">
+              <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page
+              </p>
+            </div>
+            <div class="dis2 search-div px-3">
+              <div class="row">
+                <!-- <div class="col-md-12">
+                  <button (click)="addAlias()" type="button">Add Your Keywords</button>
+                </div> -->
+                <div class="col-md-12">
+                  <span>Keywords</span>
+                </div>
+                <div class="row m-0 for-w w-100" formArrayName="keywords">
+                  <div class="col-md-6 w-100 mt-1 mx-0">
+                    <input name="tags" type="text" class="w-100" [formControlName]="0">
+                    <input name="tags" type="text" class="w-100" [formControlName]="1">
+                    <input name="tags" type="text" class="w-100" [formControlName]="2">
+                    <input name="tags" type="text" class="w-100" [formControlName]="3">
+                    <input name="tags" type="text" class="w-100" [formControlName]="4">
+                    <input name="tags" type="text" class="w-100" [formControlName]="5">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- for-profile picture -->
+        <div class="row mr-0 mt-3 pt-3 bg-light">
+          <div class="col-md-3">
+            <h4 class="pt-3 px-5 lg-1 lg-1">Profile Photo</h4>
+          </div>
+          <div class="col-md-9">
+            <div class="dis1 p-3">
+              <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page
+              </p>
+            </div>
+            <div class="dis2 px-3 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button value="1"> Ipsum refers to a dummy block of text that is often used in
+                        publishing and graphic design to fill gaps in the page</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 px-5">
+                      <div class="img-card">
+                        <div *ngIf="profile_pic">
+                          <img [src]="profile_pic" height="149px" width="99px">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="upload-btn-wrapper mt-5">
+                        <button class="btn">Upload Book Cover</button>
+                        <input type="file" name="profile_pic" accept=".png, .jpg, .jpeg" (change)="onFileSelect($event)"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1"> Ipsum refers to a dummy block of text that is often used in publishing
+                      and graphic design to fill gaps in the page</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- for-cover-picture -->
+        <div class="row mr-0 mt-3 pt-3 bg-light">
+          <div class="col-md-3">
+            <h4 class="pt-3 px-5 lg-1 lg-1">Cover Photo</h4>
+          </div>
+          <div class="col-md-9">
+            <div class="dis1 p-3">
+              <p>Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page
+              </p>
+            </div>
+            <div class="dis2 px-3 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button value="1"> Ipsum refers to a dummy block of text that is often used in
+                        publishing and graphic design to fill gaps in the page</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 px-5">
+                      <div class="img-card">
+                        <div *ngIf="cover_pic">
+                          <img [src]="cover_pic" height="149px" width="99px">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="upload-btn-wrapper mt-5">
+                        <button class="btn">Upload Background Cover</button>
+                        <input type="file" name="cover_pic" (change)="onFileSelectCover($event)" required />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1"> Ipsum refers to a dummy block of text that is often used in publishing
+                      and graphic design to fill gaps in the page</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- ////////// -->
+        <div>
+          <button mat-button mat-raised-button class="bg-secondary m-2" (click)="onBack()" type="button">Go Back</button>
+          <button mat-button mat-raised-button class="bg-warning arng m-2" matStepperNext [disabled]="!form.valid"
+            type="button">Save
+            and Continue</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Finalization</ng-template>
+      <div class="row mr-0 pt-3 bg-light">
+        <div class="border m-5">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="px-5 pt-5">Summary</h2>
+            </div>
+            <div class="col-md-6">
+              <p class="p-5 text-black-50 text-justify">Lorem Ipsum refers to a dummy block of text that is often used
+                in publishing and graphic
+                design to fill gaps in the page before the actual words are put into the finished product.
+                Lorem ipsum resembles Latin but has no real meaning
+                Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page before the actual words are put into the finished product.
+                Lorem ipsum resembles Latin but has no real meaning
+              </p>
+              <p class="p-5 text-black-50 text-justify">Lorem Ipsum refers to a dummy block of text that is often used
+                in publishing and graphic
+                design to fill gaps in the page before the actual words are put into the finished product.
+                Lorem ipsum resembles Latin but has no real meaning
+                Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page before the actual words are put into the finished product.
+                Lorem ipsum resembles Latin but has no real meaning
+              </p>
+              <p class="p-5 text-black-50 text-justify">Lorem Ipsum refers to a dummy block of text that is often used
+                in publishing and graphic
+                design to fill gaps in the page before the actual words are put into the finished product.
+                Lorem ipsum resembles Latin but has no real meaning
+                Lorem Ipsum refers to a dummy block of text that is often used in publishing and graphic
+                design to fill gaps in the page before the actual words are put into the finished product.
+                Lorem ipsum resembles Latin but has no real meaning
+              </p>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="p-5 text-justify">Lorem Ipsum refers to a dummy block of text that is often used in
+                    publishing and graphic
+                    design to fill gaps in the page before the actual words are put into the finished product.
+                    Lorem ipsum resembles Latin but has no real meaning
+                  </p>
+                </div>
+                <div class="col-md-12 text-justify">
+                  <p class="p-5 ">Lorem Ipsum refers to a dummy block of text that is often used in publishing and
+                    graphic
+                    design to fill gaps in the page before the actual words are put into the finished product.
+                    Lorem ipsum resembles Latin but has no real meaning
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button mat-button mat-raised-button matStepperPrevious class="bg-secondary m-2 ">Go Back</button>
+        <button mat-butto mat-raised-button class="bg-warning arng m-2" (click)="onSubmit()">Publish</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+
+<!-- Form Status: {{ form.status }}
+Form Value: {{ form.value | json }} -->

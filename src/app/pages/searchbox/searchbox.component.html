@@ -1,0 +1,9 @@
+<h4>mat-select</h4>
+<mat-form-field>
+  <mat-label>State</mat-label>
+  <mat-select>
+     <input (keyup)="onKey($event.target.value)"> 
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let state of selectedStates" [value]="state">{{state}}</mat-option>
+  </mat-select>
+</mat-form-field>
